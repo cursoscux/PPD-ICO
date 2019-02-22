@@ -1,6 +1,6 @@
 
 # PPD-ICO
-## Programación Paralela y Distribuida [Códigos de ejemplo]
+## Programación Paralela y Distribuida _[Códigos de ejemplo]_
 
 **Multi Threading**
 
