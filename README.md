@@ -1,6 +1,6 @@
 
 # PPD-ICO
-## Ejemplos de la materia: Programación Paralela y Distribuida
+## Programación Paralela y Distribuida [Códigos de ejemplo]
 
 **Multi Threading**
 
