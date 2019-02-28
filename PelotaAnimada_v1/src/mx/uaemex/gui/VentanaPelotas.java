@@ -17,8 +17,8 @@ public class VentanaPelotas extends JFrame {
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        PanelPelota pp = new PanelPelota();
-        add(pp);
+        PanelPelota panelPelota = new PanelPelota();
+        add(panelPelota);
 
         JPanel panelBotones = new JPanel(new FlowLayout());
 
@@ -33,13 +33,13 @@ public class VentanaPelotas extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 PelotaRebotadora pelota = new PelotaRebotadora();
 
-                pp.add(pelota);
+                panelPelota.add(pelota);
 
                 for (int i = 1; i <= 3000; i++) {
 
-                    pelota.mueve_pelota(pp.getBounds());
+                    pelota.mueve_pelota(panelPelota.getBounds());
 
-                    pp.paint(pp.getGraphics());
+                    panelPelota.paint(panelPelota.getGraphics());
                     try {
                         Thread.sleep(2);
                     } catch (InterruptedException ex) {

@@ -1,6 +1,5 @@
 package mx.uaemex.animaciones;
 
-import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
 public class PelotaRebotadora {
@@ -14,28 +13,28 @@ public class PelotaRebotadora {
 
         if (x < limites.getMinX()) {
 
-            x = limites.getMinX();
+            x = (int) limites.getMinX();
 
             dx = -dx;
         }
 
         if (x + TAMX >= limites.getMaxX()) {
 
-            x = limites.getMaxX() - TAMX;
+            x = (int) (limites.getMaxX() - TAMX);
 
             dx = -dx;
         }
 
         if (y < limites.getMinY()) {
 
-            y = limites.getMinY();
+            y = (int) limites.getMinY();
 
             dy = -dy;
         }
 
         if (y + TAMY >= limites.getMaxY()) {
 
-            y = limites.getMaxY() - TAMY;
+            y = (int) (limites.getMaxY() - TAMY);
 
             dy = -dy;
 
@@ -43,21 +42,16 @@ public class PelotaRebotadora {
 
     }
 
-    //Forma de la pelota en su posición inicial
-    public Ellipse2D getShape() {
-        return new Ellipse2D.Double(x, y, TAMX, TAMY);
+            
+    public static final int TAMX = 32;
 
-    }
+    public static final int TAMY = 32;
 
-    private static final int TAMX = 15;
+    public int x = 0;
 
-    private static final int TAMY = 15;
+    public int y = 0;
 
-    private double x = 0;
+    private int dx = 1;
 
-    private double y = 0;
-
-    private double dx = 1;
-
-    private double dy = 1;
+    private int dy = 1;
 }

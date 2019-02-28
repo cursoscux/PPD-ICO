@@ -3,6 +3,8 @@ package mx.uaemex.gui;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import mx.uaemex.animaciones.PelotaRebotadora;
@@ -21,8 +23,9 @@ public class PanelPelota extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
 
         for (PelotaRebotadora p : pelotas) {
-            g2.setColor(Color.red);
-            g2.fill(p.getShape());
+            g2.setColor(Color.red);            
+            Image img = Toolkit.getDefaultToolkit().getImage("pelota.png");
+            g2.drawImage(img,p.x,p.y, p.TAMX, p.TAMY, this);
         }
 
     }
