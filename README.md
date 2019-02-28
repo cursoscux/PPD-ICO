@@ -12,3 +12,7 @@
 |Reloj_v1|Programa que muestra como crear una ventana ```(JFrame)``` que despliega un reloj dentro de un ```JTextField``` actualizándolo cada segundo ```Thread.sleep(1000)```|
 |Reloj_v2|Programa que muestra como implementar la clase Reloj como un ```Thread``` o como un objeto de tipo ```Runnable```|
 |Reloj_v3|Programa que muestra como tener varios relojes en el mismo ```JFrame```, adicionalmente se pueden agregar alarmas individuales a cada reloj que serán desplegadas dentro de un objeto tipo ```JOptionPane```|
+|PelotaAnimada_v1|Programa que muestra como mover una imagen dentro de un ```JPanel```|
+|PelotaAnimada_v2|Programa que usa ```Thread``` para mover una imagen dentro de un ```JPanel```|
+|PelotaAnimada_v3|Programa que muestra como mover varias imagenes con un solo ```Thread```|
+|PelotaAnimada_v4|Programa que muestra como usar la técnica de ```DoubleBuffer``` en un  ```JPanel``` para evitar el efecto "Flikker" al animar/mover un objeto gráfico|
