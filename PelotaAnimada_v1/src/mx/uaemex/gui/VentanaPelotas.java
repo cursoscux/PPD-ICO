@@ -4,8 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -36,9 +34,7 @@ public class VentanaPelotas extends JFrame {
                 panelPelota.add(pelota);
 
                 for (int i = 1; i <= 3000; i++) {
-
                     pelota.mueve_pelota(panelPelota.getBounds());
-
                     panelPelota.paint(panelPelota.getGraphics());
                     try {
                         Thread.sleep(2);
