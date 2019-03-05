@@ -16,6 +16,6 @@
 |PelotaAnimada_v2|Programa que usa ```Thread``` para mover una imagen dentro de un ```JPanel```|
 |PelotaAnimada_v3|Programa que muestra como mover varias imagenes con un solo ```Thread```|
 |PelotaAnimada_v4|Programa que muestra como usar la técnica de ```DoubleBuffer``` en un  ```JPanel``` para evitar el efecto "Flikker" al animar/mover un objeto gráfico|
-|GeneraAleatorios_v1|Programa muestra como varios procesos ```(Threads)``` pueden acceder a un ```widget (JList)```de Swing|
+|GeneraAleatorios_v1|Programa muestra como varios procesos ```(Threads)``` pueden acceder a un widget ``` (JList)```de Swing|
 |GeneraAleatorios_v2|Programa muestra como varios procesos ```(Threads)``` pueden acceder a un objeto compartido generando ```ConcurrentModificationException```|
 |GeneraAleatorios_v3|Programa muestra como varios procesos ```(Threads)``` pueden acceder a objeto compartido de forma segura empleando la tecnica de sincronización de bloques ```synchronized()```|
