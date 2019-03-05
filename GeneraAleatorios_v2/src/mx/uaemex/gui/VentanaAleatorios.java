@@ -3,35 +3,61 @@ package mx.uaemex.gui;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.text.DefaultCaret;
+import javax.swing.SwingUtilities;
+import javax.swing.event.ListDataEvent;
+import javax.swing.event.ListDataListener;
 import mx.uaemex.threads.GeneraAleatorioThread;
 
-public class VentanaAleatorios extends JFrame{
+public class VentanaAleatorios extends JFrame {
 
+  public static ArrayList datos = new ArrayList();
   public VentanaAleatorios() {
-    setSize(600, 400);
-    setTitle("Generador de Aleatorios v1.0");
+    setSize(400, 240);
+    setTitle("Generador de Aleatorios v2.0");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    
+
     JPanel panelDatos = new JPanel();
-    JTextArea txtInfo = new JTextArea(10, 30);
-    DefaultCaret caret = (DefaultCaret)txtInfo.getCaret();
-    caret.setUpdatePolicy(DefaultCaret.OUT_BOTTOM);
-    JScrollPane panelScroll = new JScrollPane(txtInfo);
+    DefaultListModel modeloLista = new DefaultListModel();
+    JList listaInfo = new JList(modeloLista);
+    modeloLista.addListDataListener(new ListDataListener() {
+      @Override
+      public void intervalAdded(ListDataEvent e) {
+        Runnable doRun = new Runnable() {
+          @Override
+          public void run() {
+            listaInfo.ensureIndexIsVisible(modeloLista.getSize() - 1);
+            
+          }
+        };
+        SwingUtilities.invokeLater(doRun);
+      }
+
+      @Override
+      public void intervalRemoved(ListDataEvent e) {
+      }
+
+      @Override
+      public void contentsChanged(ListDataEvent e) {
+      }
+    });
+    JScrollPane panelScroll = new JScrollPane(listaInfo);
     panelDatos.add(panelScroll);
     add(panelDatos, BorderLayout.CENTER);
+
     JPanel panelBotones = new JPanel();
     JButton btnIniciar = new JButton("Iniciar");
-    GeneraAleatorioThread hilos[] = new GeneraAleatorioThread[5];
+    GeneraAleatorioThread hilos[] = new GeneraAleatorioThread[100];
     for (int i = 0; i < hilos.length; i++) {
-      hilos[i] = new GeneraAleatorioThread("Hilo " + i, txtInfo);      
+      hilos[i] = new GeneraAleatorioThread("Hilo " + i, modeloLista);
     }
-    
+
     btnIniciar.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -62,5 +88,5 @@ public class VentanaAleatorios extends JFrame{
     add(panelBotones, BorderLayout.SOUTH);
     setVisible(true);
   }
-  
+
 }
