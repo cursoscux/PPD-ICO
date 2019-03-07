@@ -22,7 +22,7 @@ public class GeneraAleatorioThread extends Thread {
     while (estaCorriendo) {
 
       int segundos = ThreadLocalRandom.current().nextInt(1, 5 + 1);
-      modeloLista.addElement(getName() + ", Tiempo de espera: " + segundos + "\n");     
+      modeloLista.addElement(getName() + ", Tiempo de espera: " + segundos);     
       VentanaAleatorios.datos.add(getName() + ", Tiempo de espera: " + segundos);
 
       try {

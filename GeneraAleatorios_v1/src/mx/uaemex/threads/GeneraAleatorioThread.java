@@ -1,7 +1,6 @@
 package mx.uaemex.threads;
 
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.JTextArea;
 
 public class GeneraAleatorioThread extends Thread{

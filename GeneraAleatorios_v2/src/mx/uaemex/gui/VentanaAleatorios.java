@@ -18,6 +18,7 @@ import mx.uaemex.threads.GeneraAleatorioThread;
 public class VentanaAleatorios extends JFrame {
 
   public static ArrayList datos = new ArrayList();
+  
   public VentanaAleatorios() {
     setSize(400, 240);
     setTitle("Generador de Aleatorios v2.0");
@@ -32,8 +33,7 @@ public class VentanaAleatorios extends JFrame {
         Runnable doRun = new Runnable() {
           @Override
           public void run() {
-            listaInfo.ensureIndexIsVisible(modeloLista.getSize() - 1);
-            
+            listaInfo.ensureIndexIsVisible(modeloLista.getSize() - 1);            
           }
         };
         SwingUtilities.invokeLater(doRun);
@@ -41,10 +41,12 @@ public class VentanaAleatorios extends JFrame {
 
       @Override
       public void intervalRemoved(ListDataEvent e) {
+        
       }
 
       @Override
       public void contentsChanged(ListDataEvent e) {
+        
       }
     });
     JScrollPane panelScroll = new JScrollPane(listaInfo);
@@ -53,7 +55,7 @@ public class VentanaAleatorios extends JFrame {
 
     JPanel panelBotones = new JPanel();
     JButton btnIniciar = new JButton("Iniciar");
-    GeneraAleatorioThread hilos[] = new GeneraAleatorioThread[100];
+    GeneraAleatorioThread hilos[] = new GeneraAleatorioThread[5];
     for (int i = 0; i < hilos.length; i++) {
       hilos[i] = new GeneraAleatorioThread("Hilo " + i, modeloLista);
     }

@@ -27,7 +27,7 @@ public class VentanaAleatorios extends JFrame{
     add(panelDatos, BorderLayout.CENTER);
     JPanel panelBotones = new JPanel();
     JButton btnIniciar = new JButton("Iniciar");
-    GeneraAleatorioThread hilos[] = new GeneraAleatorioThread[5];
+    GeneraAleatorioThread hilos[] = new GeneraAleatorioThread[100];
     for (int i = 0; i < hilos.length; i++) {
       hilos[i] = new GeneraAleatorioThread("Hilo " + i, txtInfo);      
     }
