@@ -10,6 +10,10 @@ public class Comal {
     comal = new ArrayList();
   }
   
+  public int countQuesadillas() {
+    return comal.size();
+  }
+  
   public void addQuesadilla(Object quesadilla) {
     comal.add(quesadilla);
   }
