@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import mx.uaemex.animaciones.PelotaRebotadora;
 
 public class VentanaPelotas extends JFrame {
-
+private boolean enMovimiento;
   public VentanaPelotas() {
     setSize(600, 400);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,12 +31,13 @@ public class VentanaPelotas extends JFrame {
       public void actionPerformed(ActionEvent e) {
         PelotaRebotadora pelota = new PelotaRebotadora();
         panelPelota.add(pelota);
-
+        enMovimiento = true;
         Thread hilo = new Thread(new Runnable() {
+            
           @Override
           public void run() {
 
-            while (true) {
+            while (enMovimiento) {
               pelota.mueve_pelota(panelPelota.getBounds());              
               panelPelota.repaint();
               try {
@@ -54,7 +55,8 @@ public class VentanaPelotas extends JFrame {
     btnSalir.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        System.exit(0);
+        //System.exit(0);
+        enMovimiento = false;
       }
     });
 

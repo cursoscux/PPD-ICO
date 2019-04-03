@@ -8,7 +8,6 @@ import java.util.Date;
 
 public class Reloj_v1 {
 
-
   public static void main(String[] args) {
     Calendar cal = Calendar.getInstance();
     Date date = cal.getTime();
