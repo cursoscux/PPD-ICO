@@ -11,6 +11,7 @@ public class MyServer extends Thread{
 
   private JTextPane txtPanelLog;
   private String serverName;
+  private boolean isRunning;
   
   public MyServer(JTextPane txtPanelLog, String serverName) {
     this.txtPanelLog = txtPanelLog;
@@ -20,12 +21,15 @@ public class MyServer extends Thread{
   @Override
   public void run() {
     super.run(); 
+    isRunning = true;
     ServerSocket serverSocket = null;
     OutputStream outputStream = null;
     InputStream inputStream = null;
-    try {
+    while (isRunning) {
+      try {
       serverSocket = new ServerSocket(1600);
-      txtPanelLog.setText("Servidor escuchando en puerto 1600...");
+      txtPanelLog.setText(txtPanelLog.getText() + "\n" + 
+              "Servidor escuchando en puerto 1600...");
       System.out.println("Servidor escuchando en puerto 1600...");
       Socket socket =  serverSocket.accept();
       String remoteUser = socket.getRemoteSocketAddress().toString();
@@ -55,7 +59,11 @@ public class MyServer extends Thread{
         //...
       }
     }
+    }
   }
   
+  public void stopMyServer() {
+    isRunning = false;
+  }
   
 }
