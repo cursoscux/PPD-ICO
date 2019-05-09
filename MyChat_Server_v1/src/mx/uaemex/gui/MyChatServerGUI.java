@@ -5,6 +5,9 @@
  */
 package mx.uaemex.gui;
 
+import mx.uaemex.msg.Message;
+import mx.uaemex.sockets.MyChatServer;
+
 /**
  *
  * @author renecruz
@@ -26,24 +29,28 @@ public class MyChatServerGUI extends javax.swing.JFrame {
   private void initComponents() {
 
     jLabel1 = new javax.swing.JLabel();
-    jTextField1 = new javax.swing.JTextField();
-    jButton1 = new javax.swing.JButton();
+    txtNombreUsuario = new javax.swing.JTextField();
+    btnIniciar = new javax.swing.JButton();
     btnSalir = new javax.swing.JButton();
     jPanel1 = new javax.swing.JPanel();
-    jLabel2 = new javax.swing.JLabel();
     jScrollPane1 = new javax.swing.JScrollPane();
-    jTextArea1 = new javax.swing.JTextArea();
-    jButton3 = new javax.swing.JButton();
+    txtMensaje = new javax.swing.JTextArea();
+    btnEnviar = new javax.swing.JButton();
     jPanel2 = new javax.swing.JPanel();
-    jLabel3 = new javax.swing.JLabel();
     jScrollPane2 = new javax.swing.JScrollPane();
-    jTextArea2 = new javax.swing.JTextArea();
+    txtCharla = new javax.swing.JTextArea();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    setTitle("Servidor Chat v1.0");
 
     jLabel1.setText("Nombre de usuario:");
 
-    jButton1.setText("Iniciar");
+    btnIniciar.setText("Iniciar");
+    btnIniciar.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnIniciarActionPerformed(evt);
+      }
+    });
 
     btnSalir.setText("Salir");
     btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -52,66 +59,65 @@ public class MyChatServerGUI extends javax.swing.JFrame {
       }
     });
 
-    jLabel2.setText("Mensaje:");
+    jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Mensaje"));
 
-    jTextArea1.setColumns(20);
-    jTextArea1.setRows(5);
-    jScrollPane1.setViewportView(jTextArea1);
+    txtMensaje.setColumns(20);
+    txtMensaje.setLineWrap(true);
+    txtMensaje.setRows(5);
+    txtMensaje.setWrapStyleWord(true);
+    jScrollPane1.setViewportView(txtMensaje);
 
-    jButton3.setText("Enviar");
+    btnEnviar.setText("Enviar");
+    btnEnviar.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnEnviarActionPerformed(evt);
+      }
+    });
 
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
     jPanel1Layout.setHorizontalGroup(
       jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(jPanel1Layout.createSequentialGroup()
-        .addContainerGap()
-        .addComponent(jLabel2)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(jScrollPane1)
-        .addContainerGap())
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        .addComponent(jButton3)
+        .addComponent(btnEnviar)
         .addGap(165, 165, 165))
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        .addContainerGap()
+        .addComponent(jScrollPane1)
+        .addContainerGap())
     );
     jPanel1Layout.setVerticalGroup(
       jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(jPanel1Layout.createSequentialGroup()
         .addContainerGap()
-        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jLabel2))
+        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        .addComponent(jButton3))
+        .addComponent(btnEnviar))
     );
 
-    jLabel3.setText("Charla:");
+    jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Charla"));
 
-    jTextArea2.setColumns(20);
-    jTextArea2.setRows(5);
-    jScrollPane2.setViewportView(jTextArea2);
+    txtCharla.setColumns(20);
+    txtCharla.setLineWrap(true);
+    txtCharla.setRows(5);
+    txtCharla.setWrapStyleWord(true);
+    jScrollPane2.setViewportView(txtCharla);
 
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
     jPanel2Layout.setHorizontalGroup(
       jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        .addComponent(jLabel3)
-        .addGap(197, 197, 197))
       .addGroup(jPanel2Layout.createSequentialGroup()
-        .addGap(35, 35, 35)
-        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addContainerGap()
+        .addComponent(jScrollPane2)
+        .addContainerGap())
     );
     jPanel2Layout.setVerticalGroup(
       jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(jPanel2Layout.createSequentialGroup()
         .addContainerGap()
-        .addComponent(jLabel3)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
         .addContainerGap())
     );
 
@@ -127,9 +133,9 @@ public class MyChatServerGUI extends javax.swing.JFrame {
           .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
             .addComponent(jLabel1)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jButton1)
+            .addComponent(btnIniciar)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(btnSalir)
             .addGap(0, 0, Short.MAX_VALUE)))
@@ -141,8 +147,8 @@ public class MyChatServerGUI extends javax.swing.JFrame {
         .addContainerGap()
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel1)
-          .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jButton1)
+          .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(btnIniciar)
           .addComponent(btnSalir))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,6 +164,19 @@ public class MyChatServerGUI extends javax.swing.JFrame {
     System.exit(0);
   }//GEN-LAST:event_btnSalirActionPerformed
 
+  private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+    myChatServer = new MyChatServer(txtNombreUsuario.getText(), txtCharla);
+    myChatServer.start();
+  }//GEN-LAST:event_btnIniciarActionPerformed
+
+  private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
+    Message msg = new Message(1, txtNombreUsuario.getText(),txtMensaje.getText());
+    myChatServer.sendMessage(msg);
+    txtCharla.append(txtMensaje.getText() + "\n");
+    txtCharla.setCaretPosition(txtCharla.getDocument().getLength());
+    txtMensaje.setText("");
+  }//GEN-LAST:event_btnEnviarActionPerformed
+
   /**
    * @param args the command line arguments
    */
@@ -169,7 +188,7 @@ public class MyChatServerGUI extends javax.swing.JFrame {
      */
     try {
       for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-        if ("Nimbus".equals(info.getName())) {
+        if ("Metal".equals(info.getName())) {
           javax.swing.UIManager.setLookAndFeel(info.getClassName());
           break;
         }
@@ -194,18 +213,17 @@ public class MyChatServerGUI extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
+  private javax.swing.JButton btnEnviar;
+  private javax.swing.JButton btnIniciar;
   private javax.swing.JButton btnSalir;
-  private javax.swing.JButton jButton1;
-  private javax.swing.JButton jButton3;
   private javax.swing.JLabel jLabel1;
-  private javax.swing.JLabel jLabel2;
-  private javax.swing.JLabel jLabel3;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
   private javax.swing.JScrollPane jScrollPane1;
   private javax.swing.JScrollPane jScrollPane2;
-  private javax.swing.JTextArea jTextArea1;
-  private javax.swing.JTextArea jTextArea2;
-  private javax.swing.JTextField jTextField1;
+  private javax.swing.JTextArea txtCharla;
+  private javax.swing.JTextArea txtMensaje;
+  private javax.swing.JTextField txtNombreUsuario;
   // End of variables declaration//GEN-END:variables
+  private MyChatServer myChatServer;
 }
