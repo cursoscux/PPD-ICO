@@ -36,7 +36,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnIniciar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnSalir2" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnSalir" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -52,11 +52,7 @@
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtNombreUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnIniciar" alignment="3" min="-2" max="-2" attributes="0"/>
-<<<<<<< HEAD
-                  <Component id="btnSalir2" alignment="3" min="-2" max="-2" attributes="0"/>
-=======
                   <Component id="btnSalir" alignment="3" min="-2" max="-2" attributes="0"/>
->>>>>>> 59ea8d660763356c58a85f735da9f901e3c8b268
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
@@ -83,12 +79,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIniciarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnSalir2">
+    <Component class="javax.swing.JButton" name="btnSalir">
       <Properties>
         <Property name="text" type="java.lang.String" value="Salir"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalir2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalirActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
@@ -105,11 +101,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-<<<<<<< HEAD
-                  <Component id="btnEnviarMensaje" min="-2" max="-2" attributes="0"/>
-=======
                   <Component id="btnEnviar" min="-2" max="-2" attributes="0"/>
->>>>>>> 59ea8d660763356c58a85f735da9f901e3c8b268
                   <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
@@ -125,11 +117,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="60" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-<<<<<<< HEAD
-                  <Component id="btnEnviarMensaje" min="-2" max="-2" attributes="0"/>
-=======
                   <Component id="btnEnviar" min="-2" max="-2" attributes="0"/>
->>>>>>> 59ea8d660763356c58a85f735da9f901e3c8b268
               </Group>
           </Group>
         </DimensionLayout>
@@ -152,20 +140,12 @@
             </Component>
           </SubComponents>
         </Container>
-<<<<<<< HEAD
-        <Component class="javax.swing.JButton" name="btnEnviarMensaje">
-=======
         <Component class="javax.swing.JButton" name="btnEnviar">
->>>>>>> 59ea8d660763356c58a85f735da9f901e3c8b268
           <Properties>
             <Property name="text" type="java.lang.String" value="Enviar"/>
           </Properties>
           <Events>
-<<<<<<< HEAD
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEnviarMensajeActionPerformed"/>
-=======
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEnviarActionPerformed"/>
->>>>>>> 59ea8d660763356c58a85f735da9f901e3c8b268
           </Events>
         </Component>
       </SubComponents>
@@ -184,11 +164,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-<<<<<<< HEAD
-                  <Component id="jScrollPane3" max="32767" attributes="0"/>
-=======
                   <Component id="jScrollPane2" max="32767" attributes="0"/>
->>>>>>> 59ea8d660763356c58a85f735da9f901e3c8b268
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -196,24 +172,15 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-<<<<<<< HEAD
-                  <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
-=======
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane2" pref="80" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
->>>>>>> 59ea8d660763356c58a85f735da9f901e3c8b268
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-<<<<<<< HEAD
-        <Container class="javax.swing.JScrollPane" name="jScrollPane3">
-=======
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
->>>>>>> 59ea8d660763356c58a85f735da9f901e3c8b268
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
@@ -226,12 +193,6 @@
                 <Property name="lineWrap" type="boolean" value="true"/>
                 <Property name="rows" type="int" value="5"/>
                 <Property name="wrapStyleWord" type="boolean" value="true"/>
-<<<<<<< HEAD
-                <Property name="caretPosition" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="txtCharla.getDocument().getLength()" type="code"/>
-                </Property>
-=======
->>>>>>> 59ea8d660763356c58a85f735da9f901e3c8b268
               </Properties>
             </Component>
           </SubComponents>
