@@ -24,7 +24,7 @@ public class MsgListener extends Thread{
     while (isRunning) {
       try {
         Message msg = (Message) oIS.readObject();
-        txtCharla.append(msg.getMsgBody() + "\n");
+        txtCharla.append(msg.getMsgSender() + ":" +  msg.getMsgBody() + "\n");
         txtCharla.setCaretPosition(txtCharla.getDocument().getLength());
       } catch (IOException ex) {        
       } catch (ClassNotFoundException ex) {        
