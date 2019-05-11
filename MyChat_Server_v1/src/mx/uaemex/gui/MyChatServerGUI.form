@@ -101,7 +101,11 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
+<<<<<<< HEAD
                   <Component id="btnEnviarMensaje" min="-2" max="-2" attributes="0"/>
+=======
+                  <Component id="btnEnviar" min="-2" max="-2" attributes="0"/>
+>>>>>>> 59ea8d660763356c58a85f735da9f901e3c8b268
                   <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
@@ -117,7 +121,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="60" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
+<<<<<<< HEAD
                   <Component id="btnEnviarMensaje" min="-2" max="-2" attributes="0"/>
+=======
+                  <Component id="btnEnviar" min="-2" max="-2" attributes="0"/>
+>>>>>>> 59ea8d660763356c58a85f735da9f901e3c8b268
               </Group>
           </Group>
         </DimensionLayout>
@@ -140,12 +148,20 @@
             </Component>
           </SubComponents>
         </Container>
+<<<<<<< HEAD
         <Component class="javax.swing.JButton" name="btnEnviarMensaje">
+=======
+        <Component class="javax.swing.JButton" name="btnEnviar">
+>>>>>>> 59ea8d660763356c58a85f735da9f901e3c8b268
           <Properties>
             <Property name="text" type="java.lang.String" value="Enviar"/>
           </Properties>
           <Events>
+<<<<<<< HEAD
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEnviarMensajeActionPerformed"/>
+=======
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEnviarActionPerformed"/>
+>>>>>>> 59ea8d660763356c58a85f735da9f901e3c8b268
           </Events>
         </Component>
       </SubComponents>
