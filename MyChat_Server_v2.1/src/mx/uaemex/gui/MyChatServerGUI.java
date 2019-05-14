@@ -5,20 +5,26 @@
  */
 package mx.uaemex.gui;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import mx.uaemex.msg.Message;
-import mx.uaemex.sockets.MyChatClient;
+import mx.uaemex.sockets.MyChatServer;
 
 /**
  *
  * @author renecruz
  */
-public class MyClientGUI extends javax.swing.JFrame {
+public class MyChatServerGUI extends javax.swing.JFrame {
 
   /**
-   * Creates new form MyClientGUI
+   * Creates new form MyChatServerGUI
    */
-  public MyClientGUI() {
+  public MyChatServerGUI() {
     initComponents();
+    try {
+      setTitle(getTitle() + " ["+ InetAddress.getLocalHost() +"]");
+    } catch (UnknownHostException ex) { 
+    }
   }
 
   /**
@@ -39,12 +45,9 @@ public class MyClientGUI extends javax.swing.JFrame {
     jPanel2 = new javax.swing.JPanel();
     jScrollPane2 = new javax.swing.JScrollPane();
     txtCharla = new javax.swing.JTextArea();
-    jLabel2 = new javax.swing.JLabel();
-    txtIPServidor = new javax.swing.JTextField();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-    setTitle("Cliente Chat v2.0");
-    setPreferredSize(new java.awt.Dimension(462, 324));
+    setTitle("Servidor Chat v2.0");
 
     jLabel1.setText("Nombre de usuario:");
 
@@ -113,56 +116,45 @@ public class MyClientGUI extends javax.swing.JFrame {
       jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(jPanel2Layout.createSequentialGroup()
         .addContainerGap()
-        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
+        .addComponent(jScrollPane2)
         .addContainerGap())
     );
     jPanel2Layout.setVerticalGroup(
       jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(jPanel2Layout.createSequentialGroup()
         .addContainerGap()
-        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
         .addContainerGap())
     );
-
-    jLabel2.setText("IP Servidor:");
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(layout.createSequentialGroup()
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
         .addContainerGap()
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        .addContainerGap())
-      .addGroup(layout.createSequentialGroup()
-        .addGap(39, 39, 39)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-          .addComponent(jLabel1)
-          .addComponent(jLabel2))
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-          .addComponent(txtNombreUsuario)
-          .addComponent(txtIPServidor, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addGap(18, 18, 18)
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-          .addComponent(btnIniciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+          .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+          .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+          .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+            .addComponent(jLabel1)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(btnIniciar)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(btnSalir)
+            .addGap(0, 0, Short.MAX_VALUE)))
+        .addContainerGap())
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(layout.createSequentialGroup()
         .addContainerGap()
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-          .addComponent(jLabel2)
-          .addComponent(txtIPServidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(btnIniciar))
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel1)
           .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(btnIniciar)
           .addComponent(btnSalir))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -179,16 +171,16 @@ public class MyClientGUI extends javax.swing.JFrame {
   }//GEN-LAST:event_btnSalirActionPerformed
 
   private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-    myChatClient = new MyChatClient(txtNombreUsuario.getText(), txtCharla, txtIPServidor.getText());
-    myChatClient.start();
+    myChatServer = new MyChatServer(txtNombreUsuario.getText(), txtCharla);
+    myChatServer.start();
   }//GEN-LAST:event_btnIniciarActionPerformed
 
   private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
-    Message msg = new Message(1, txtNombreUsuario.getText(), txtMensaje.getText());
-    myChatClient.sendMessage(msg);
-    //txtCharla.append("yo: " + txtMensaje.getText() + "\n");
+    Message msg = new Message(1, txtNombreUsuario.getText(),txtMensaje.getText());
+    myChatServer.sendMessage(msg);
+    txtCharla.append("yo: " + txtMensaje.getText() + "\n");    
+    txtCharla.setCaretPosition(txtCharla.getDocument().getLength());
     txtMensaje.setText("");
-    //txtCharla.setCaretPosition(txtCharla.getDocument().getLength());
   }//GEN-LAST:event_btnEnviarActionPerformed
 
   /**
@@ -208,20 +200,20 @@ public class MyClientGUI extends javax.swing.JFrame {
         }
       }
     } catch (ClassNotFoundException ex) {
-      java.util.logging.Logger.getLogger(MyClientGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(MyChatServerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (InstantiationException ex) {
-      java.util.logging.Logger.getLogger(MyClientGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(MyChatServerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (IllegalAccessException ex) {
-      java.util.logging.Logger.getLogger(MyClientGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(MyChatServerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-      java.util.logging.Logger.getLogger(MyClientGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(MyChatServerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
     //</editor-fold>
 
     /* Create and display the form */
     java.awt.EventQueue.invokeLater(new Runnable() {
       public void run() {
-        new MyClientGUI().setVisible(true);
+        new MyChatServerGUI().setVisible(true);
       }
     });
   }
@@ -231,15 +223,13 @@ public class MyClientGUI extends javax.swing.JFrame {
   private javax.swing.JButton btnIniciar;
   private javax.swing.JButton btnSalir;
   private javax.swing.JLabel jLabel1;
-  private javax.swing.JLabel jLabel2;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
   private javax.swing.JScrollPane jScrollPane1;
   private javax.swing.JScrollPane jScrollPane2;
   private javax.swing.JTextArea txtCharla;
-  private javax.swing.JTextField txtIPServidor;
   private javax.swing.JTextArea txtMensaje;
   private javax.swing.JTextField txtNombreUsuario;
   // End of variables declaration//GEN-END:variables
-  private MyChatClient myChatClient;
+  private MyChatServer myChatServer;
 }
