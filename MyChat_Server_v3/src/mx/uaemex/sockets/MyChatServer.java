@@ -6,10 +6,8 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import javax.swing.JTextArea;
 import javax.swing.JTextPane;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
+import mx.uaemex.gui.MyServerGUI;
 import mx.uaemex.msg.Message;
 
 public class MyChatServer extends Thread {
@@ -37,11 +35,11 @@ public class MyChatServer extends Thread {
     while (isRunning) {
       try {
         serverSocket = new ServerSocket(1600);
-        append("Servidor escuchando en puerto 1600...\n");
+        MyServerGUI.append(Message.COMM_MESSAGE, txtCharla, "Servidor escuchando en puerto 1600...\n");
         Socket socket = serverSocket.accept();
         oOutputStream = new ObjectOutputStream(socket.getOutputStream());
         oInputStream = new ObjectInputStream(socket.getInputStream());
-        append("Conexión establecida...\n");
+        MyServerGUI.append(Message.COMM_MESSAGE,txtCharla, "Conexión establecida...\n");
         msgSender = new MsgSender(oOutputStream);
         listMsgSender.add(msgSender);
         msgListener = new MsgListener(oInputStream, txtCharla, this);
@@ -62,12 +60,4 @@ public class MyChatServer extends Thread {
     }
   }
   
-  public void append(String s) {
-    try {
-      Document doc = txtCharla.getDocument();
-      doc.insertString(doc.getLength(), s, null);
-    } catch(BadLocationException ex) {
-      //TODO something...
-    }
-  }
 }

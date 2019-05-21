@@ -4,32 +4,30 @@ import java.io.Serializable;
 
 public class Message implements Serializable{
 
-  /**
-   * @return the idMessage
-   */
-  public int getIdMessage() {
-    return idMessage;
-  }
-
-  /**
-   * @return the msgSender
-   */
+  public static final int LOGIN_MESSAGE = 1;
+  public static final int LOGOUT_MESSAGE = 2;
+  public static final int CHAT_MESSAGE = 3;
+  public static final int COMM_MESSAGE = 4;
+  
   public String getMsgSender() {
     return msgSender;
   }
 
-  /**
-   * @return the msgBody
-   */
   public String getMsgBody() {
     return msgBody;
   }
-  private int idMessage;
+
+  public int getMessageType() {
+    return messageType;
+  }
+  
+  
+  private int messageType;
   private String msgSender;
   private String msgBody;
 
-  public Message(int idMessage, String msgSender, String msgBody) {
-    this.idMessage = idMessage;
+  public Message(int messageType, String msgSender, String msgBody) {
+    this.messageType = messageType;
     this.msgSender = msgSender;
     this.msgBody = msgBody;
   }

@@ -4,18 +4,19 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import javax.swing.JTextArea;
+import javax.swing.JTextPane;
+import mx.uaemex.gui.MyClientGUI;
 import mx.uaemex.msg.Message;
 
 public class MyChatClient extends Thread {
 
   private String clientName;
-  private JTextArea txtCharla;
+  private JTextPane txtCharla;
   private MsgSender msgSender;
   private MsgListener msgListener;
   private String IPServidor;
 
-  public MyChatClient(String clientName, JTextArea txtCharla, String IPServidor) {
+  public MyChatClient(String clientName, JTextPane txtCharla, String IPServidor) {
     this.clientName = clientName;
     this.txtCharla = txtCharla;
     this.IPServidor = IPServidor;
@@ -28,11 +29,11 @@ public class MyChatClient extends Thread {
     ObjectInputStream oInputStream = null;
     ObjectOutputStream oOutputStream = null;
     try {
-      txtCharla.append("Intentando conexión...\n");
+      MyClientGUI.append(Message.COMM_MESSAGE , txtCharla, "Intentando conexión...\n");
       socket = new Socket(IPServidor, 1600);
       oInputStream = new ObjectInputStream(socket.getInputStream());
       oOutputStream = new ObjectOutputStream(socket.getOutputStream());
-      txtCharla.append("Conexión establecida\n");
+      MyClientGUI.append(Message.COMM_MESSAGE , txtCharla, "Conexión establecida\n");
 
       msgSender = new MsgSender(oOutputStream);
       msgListener = new MsgListener(oInputStream, txtCharla);
