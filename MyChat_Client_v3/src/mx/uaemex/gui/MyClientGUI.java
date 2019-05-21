@@ -5,6 +5,12 @@
  */
 package mx.uaemex.gui;
 
+import java.awt.Color;
+import javax.swing.JTextPane;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
 import mx.uaemex.msg.Message;
 import mx.uaemex.sockets.MyChatClient;
 
@@ -37,14 +43,13 @@ public class MyClientGUI extends javax.swing.JFrame {
     txtMensaje = new javax.swing.JTextArea();
     btnEnviar = new javax.swing.JButton();
     jPanel2 = new javax.swing.JPanel();
-    jScrollPane2 = new javax.swing.JScrollPane();
-    txtCharla = new javax.swing.JTextArea();
+    jScrollPane3 = new javax.swing.JScrollPane();
+    txtCharla = new javax.swing.JTextPane();
     jLabel2 = new javax.swing.JLabel();
     txtIPServidor = new javax.swing.JTextField();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     setTitle("Cliente Chat v2.0");
-    setPreferredSize(new java.awt.Dimension(462, 324));
 
     jLabel1.setText("Nombre de usuario:");
 
@@ -101,11 +106,7 @@ public class MyClientGUI extends javax.swing.JFrame {
 
     jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Charla"));
 
-    txtCharla.setColumns(20);
-    txtCharla.setLineWrap(true);
-    txtCharla.setRows(5);
-    txtCharla.setWrapStyleWord(true);
-    jScrollPane2.setViewportView(txtCharla);
+    jScrollPane3.setViewportView(txtCharla);
 
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
@@ -113,18 +114,19 @@ public class MyClientGUI extends javax.swing.JFrame {
       jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(jPanel2Layout.createSequentialGroup()
         .addContainerGap()
-        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
+        .addComponent(jScrollPane3)
         .addContainerGap())
     );
     jPanel2Layout.setVerticalGroup(
       jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(jPanel2Layout.createSequentialGroup()
-        .addContainerGap()
-        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
         .addContainerGap())
     );
 
     jLabel2.setText("IP Servidor:");
+
+    txtIPServidor.setText("127.0.0.1");
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -184,7 +186,7 @@ public class MyClientGUI extends javax.swing.JFrame {
   }//GEN-LAST:event_btnIniciarActionPerformed
 
   private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
-    Message msg = new Message(1, txtNombreUsuario.getText(), txtMensaje.getText());
+    Message msg = new Message(Message.CHAT_MESSAGE, txtNombreUsuario.getText(), txtMensaje.getText());
     myChatClient.sendMessage(msg);
     //txtCharla.append("yo: " + txtMensaje.getText() + "\n");
     txtMensaje.setText("");
@@ -235,11 +237,39 @@ public class MyClientGUI extends javax.swing.JFrame {
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
   private javax.swing.JScrollPane jScrollPane1;
-  private javax.swing.JScrollPane jScrollPane2;
-  private javax.swing.JTextArea txtCharla;
+  private javax.swing.JScrollPane jScrollPane3;
+  private javax.swing.JTextPane txtCharla;
   private javax.swing.JTextField txtIPServidor;
   private javax.swing.JTextArea txtMensaje;
   private javax.swing.JTextField txtNombreUsuario;
   // End of variables declaration//GEN-END:variables
   private MyChatClient myChatClient;
+  
+  public static void append(int messageType, JTextPane txtPanel, String s) {
+    try {
+      SimpleAttributeSet set = new SimpleAttributeSet();
+      switch (messageType) {
+        case Message.LOGIN_MESSAGE:
+          StyleConstants.setForeground(set, Color.gray);
+          break;
+        case Message.LOGOUT_MESSAGE:
+          StyleConstants.setForeground(set, Color.gray);
+          break;
+        case Message.CHAT_MESSAGE:
+          StyleConstants.setForeground(set, Color.blue);
+          break;
+          case Message.COMM_MESSAGE:
+          StyleConstants.setForeground(set, Color.gray);
+          break;
+        default:
+          StyleConstants.setForeground(set, Color.black);
+          break;
+      }
+      System.out.println(s);
+      Document doc = txtPanel.getDocument();
+      doc.insertString(doc.getLength(), s, set);
+    } catch (BadLocationException ex) {
+      //TODO something...
+    }
+  }
 }
