@@ -22,9 +22,9 @@ public class Message implements Serializable{
   }
   
   
-  private int messageType;
-  private String msgSender;
-  private String msgBody;
+  private final int messageType;
+  private final String msgSender;
+  private final String msgBody;
 
   public Message(int messageType, String msgSender, String msgBody) {
     this.messageType = messageType;
@@ -33,3 +33,4 @@ public class Message implements Serializable{
   }
     
 }
+
