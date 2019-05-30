@@ -13,8 +13,7 @@ public class MyServer {
     OutputStream outputStream = null;
     InputStream inputStream = null;
     try {
-      serverSocket = new ServerSocket(1600);
-      System.out.println("Servidor escuchando en puerto 1600...");
+      serverSocket = new ServerSocket(1732);
       Socket socket =  serverSocket.accept();
       System.out.println("Conexión recibida");
       outputStream = socket.getOutputStream();
@@ -41,3 +40,4 @@ public class MyServer {
   }
   
 }
+
