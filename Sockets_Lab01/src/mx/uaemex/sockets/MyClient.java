@@ -13,7 +13,7 @@ public class MyClient {
     OutputStream outputStream = null;
     try {
       System.out.println("Intentando conexión...");
-      socket = new Socket("127.0.0.1", 1600);
+      socket = new Socket("127.0.0.1", 1732);
       System.out.println("Conexión establecida");
       inputStream = socket.getInputStream();
       byte[] datos = new byte[1024];
@@ -39,3 +39,4 @@ public class MyClient {
   }
   
 }
+
