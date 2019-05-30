@@ -11,9 +11,9 @@ import mx.uaemex.msg.Message;
 
 public class MsgListener extends Thread{
 
-  private ObjectInputStream oIS;
-  private JTextPane txtCharla;
-  private HashMap<String, Integer> listaUsuarios = new HashMap<>(); 
+  private final ObjectInputStream oIS;
+  private final JTextPane txtCharla;
+  private final HashMap<String, Integer> listaUsuarios = new HashMap<>(); 
 
   public MsgListener(ObjectInputStream oIS, JTextPane txtCharla) {
     this.oIS = oIS;
@@ -46,3 +46,4 @@ public class MsgListener extends Thread{
     isRunning = false;
   }
 }
+
